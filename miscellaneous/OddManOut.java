@@ -27,14 +27,14 @@ public class OddManOut {
             arr[i] = Integer.parseInt(nums[i]);
 
         System.out.println("Integer that appears only once: " + 
-            oddManOut(arr));
+            oddManOut2(arr));
     }
 
     /* You're given an unsorted array of integers where every integer appears 
      * exactly twice, except for one integer which appears only once. Write 
      * an algorithm that finds the integer that appears only once.
      */
-    public static int oddManOut(int[] arr) {
+    public static int oddManOut1(int[] arr) {
         int sum = 0;
         HashSet<Integer> set = new HashSet<Integer>();
 
@@ -49,4 +49,16 @@ public class OddManOut {
 
         return sum;
     }
+
+    // Solution using XOR
+    public static int oddManOut2(int[] arr) {
+        System.out.println("Using XOR");
+        int n = 0;
+
+        for(int i = 0; i < arr.length; i++)
+            n ^= arr[i];
+
+        return n;
+    }
+
 }
