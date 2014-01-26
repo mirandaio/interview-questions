@@ -52,7 +52,6 @@ public class OddManOut {
 
     // Solution using XOR
     public static int oddManOut2(int[] arr) {
-        System.out.println("Using XOR");
         int n = 0;
 
         for(int i = 0; i < arr.length; i++)
