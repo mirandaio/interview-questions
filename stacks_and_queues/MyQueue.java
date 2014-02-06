@@ -19,6 +19,7 @@ public class MyQueue {
         in.push(n);
     }
 
+    // Time complexity: O(N) in the worst case, but O(1) on average.
     public int dequeue() {
         if(out.isEmpty()) {
             while(!in.isEmpty())
