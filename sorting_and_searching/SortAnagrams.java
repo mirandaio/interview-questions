@@ -20,14 +20,12 @@ public class SortAnagrams {
         for(int i = 0; i < arr.length; i++) {
             String key = sortChars(arr[i]);
 
-            if(map.containsKey(key)) {
-                LinkedList<String> list = map.get(key);
-                list.add(arr[i]);
-            } else {
-                LinkedList<String> list = new LinkedList<String>();
-                list.add(arr[i]);
-                map.put(key, list);
+            if(!map.containsKey(key)) {
+                map.put(key, new LinkedList<String>());
             }
+
+            LinkedList<String> list = map.get(key);
+            list.add(arr[i]);
         }
 
         int i = 0;
