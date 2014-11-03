@@ -10,7 +10,6 @@
  * that, given a zero-indexed array A consisting of N integers, returns the 
  * beginning of any ascending slice of A of maximal size.
  */
-
 class AscendingSlice {
     public int ascendingSlice(int[] A) {
         int start = 0;
@@ -20,8 +19,20 @@ class AscendingSlice {
 
         for(int i = 1; i < A.length; i++) {
             if(A[i-1] < A[i]) {
-            }
+                end_temp = i;
+            } else {
+                if(end - start < end_temp - start_temp) {
+                    start = start_temp:
+                    end = end_temp;
+                }
 
+                start_temp = i;
+                end_temp = i;
+            }
+        }
+
+        if(end - start < end_temp - start_temp) {
+            start = start_temp;
         }
 
         return start;
