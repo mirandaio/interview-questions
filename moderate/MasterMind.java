@@ -39,28 +39,24 @@ public class MasterMind {
     public static int[] mastermind(char[] sol, char[] guess) {
         int hits = 0;
         int pseudo = 0;
-        
-        // Check for hits
+        int[] solCounts = new int[128]; // assume lower ASCII (use HashMap or some such?)
+        int[] guessCounts = new int[128]; // assume lower ASCII (use HashMap or some such?)
+
+        // Check for hits - O(n)
         for(int i = 0; i < sol.length; i++) {
-            if(sol[i] == guess[i]) {
+            char s = sol[i];
+            char g = guess[i];
+            if(s == g) {
                 hits++;
-                sol[i] = 'X';
-                guess[i] = 'X';
+            } else {
+                solCounts[(int)s]++;
+                guessCounts[(int)g]++;
             }
         }
         
-        // Check for pseudo-hits
-        for(int i = 0; i < sol.length; i++) {
-            if(guess[i] != 'X') {
-                for(int j = 0; j < sol.length; j++) {
-                    if(guess[i] == sol[j]) {
-                        pseudo++;
-                        guess[i] = 'X';
-                        sol[j] = 'X';
-                        break;
-                    }
-                }
-            }
+        // Check for pseudo-hits - O(k)
+        for(int i = 0; i < solCounts.lenth; i++) {
+            pseudo += java.lang.Math.min(solCounts[i], guessCounts[i]);
         }
 
         return new int[] {hits, pseudo};
